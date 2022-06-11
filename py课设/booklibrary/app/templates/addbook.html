@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block name %}
+添加图书
+{% endblock %}
+{% block main %}
+
+           <form action="" method="post">
+                {% csrf_token %}
+                <!--  加密系统   -->
+                <p>
+                    id <input class="btn btn-primary-outline radius" type="text" name="id">
+                </p>
+                <p>
+                    书名 <input class="btn btn-primary-outline radius" type="text" name="BookName">
+                </p>
+                <p>
+                    作者 <input class="btn btn-primary-outline radius" type="text" name="Author">
+                </p>
+                <p>
+                    价格 <input class="btn btn-primary-outline radius" type="text" name="Price">
+                </p>
+                <p>
+                    出版社 <input class="btn btn-primary-outline radius" type="text" name="Publisher">
+                </p>
+                <p>
+                    版号 <input class="btn btn-primary-outline radius" type="text" name="ISBN">
+                </p>
+                <p>
+                    是否能在线阅读 <input class="btn btn-primary-outline radius" type="text" name="IsReadOnline">
+                </p>
+                <p>
+                    书编号 <input class="btn btn-primary-outline radius" type="text" name="BookNum">
+                </p>
+                <p>
+                    <button class="btn btn-warning-outline radius" type="submit" class="btn">提交</button>
+                </p>
+            </form>
+
+{% endblock %}
+
+

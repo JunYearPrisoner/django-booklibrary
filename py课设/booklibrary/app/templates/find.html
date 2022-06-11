@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block name %}
+查找图书
+{% endblock %}
+
+{% block main %}
+{% csrf_token %}
+<form action="" method="post">
+    {% csrf_token %}
+    <!--  加密系统   -->
+
+    <p>
+        书名查找 <input class="btn btn-primary-outline radius" type="text" name="BookName" >
+         <button class="btn btn-primary-outline radius" type="submit" class="btn">查找</button>
+        作者查找 <input class="btn btn-primary-outline radius" type="text" name="Author" >
+                <button class="btn btn-primary-outline radius" type="submit" class="btn">查找</button>
+        是否能在线阅读 <input class="btn btn-primary-outline radius" type="text" name="IsReadOnline" >
+                <button class="btn btn-primary-outline radius" type="submit" class="btn">查找</button>
+    </p>
+
+</form>
+ <div class="panel-body">
+            <table class="table table-border table-bordered table-striped mt-20" id="table">
+                <thead>
+                <tr>
+                    <th class="col1" style="text-align:center">id</th>
+                    <th class="col1" style="text-align:center">书名</th>
+                    <th class="col2" style="text-align:center">作者</th>
+                    <th class="col3" style="text-align:center">价格</th>
+                    <th class="col1" style="text-align:center">出版社</th>
+                    <th class="col2" style="text-align:center">版号</th>
+                    <th class="col2" style="text-align:center">在线阅读</th>
+                    <th class="col3" style="text-align:center">编号</th>
+                    <th class="col3" style="text-align:center">操作</th>
+                </tr>
+                {% for book_obj in book_obj_list %}
+                    <tr>
+                        <th class="col1" style="text-align:center">{{book_obj.id}}</th>
+                        <th class="col1" style="text-align:center">{{book_obj.BookName}}</th>
+                        <th class="col2" style="text-align:center">{{book_obj.Author}}</th>
+                        <th class="col3" style="text-align:center">{{book_obj.Price}}</th>
+                        <th class="col1" style="text-align:center">{{book_obj.Publisher}}</th>
+                        <th class="col2" style="text-align:center">{{book_obj.ISBN}}</th>
+                        <th class="col1" style="text-align:center">{{book_obj.IsReadOnline}}</th>
+                        <th class="col3" style="text-align:center">{{book_obj.BookNum}}</th>
+                        <th class="col3" style="text-align:center"><a class="btn btn-primary-outline radius"
+                                                                      href="/app/edit_book/?id={{book_obj.id}}">修改</a>
+                                                                    <a class="btn btn-warning-outline radius"
+                                                                       href="/app/del_book/?id={{book_obj.id}}">删除</a></th>
+                    </tr>
+                {% endfor %}
+                </thead>
+                <tbody id="tablebody">
+                </tbody>
+            </table>
+        </div>
+    <!--end表格-->
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+
+    <title>{% block title %}{% endblock title %}</title>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dashboard.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/H-ui.css'%}" >
+</head>
+<body style="background-image: url({%static 'images/bg-main.png' %})" >
+<!--分页名称-->
+<!--导航栏-->
+{% include "nav.html" %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-sidebar">
+                {% block nav %}
+                {% endblock %}
+                </ul>
+        </div>
+<!--主程序-->
+
+        <div class="col-md-9" style="justify-content:flex-end;">
+            <h1 class="page-header" style="text-align:center">图书管理系统</h1>
+            <div class="panel panel-primary" >
+            <div class="panel-header" style="text-align:center">{% block name %}{% endblock name %}</div>
+            <div class="panel-body" style="background-color:#eae5d8">
+                {% block main %}
+                {% endblock %}
+                <!--   页码     -->
+            <nav aria-label="Page navigation">
+                <ul class="" style="">
+                    {% if book_obj_list.has_previous %}
+                    <li style="display: inline">
+                    <a href="?page={{ book_obj_list.previous_page_number }}" class="btn btn-danger-outline radius" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>
+                    {% endif %}
+                    <li style="display: inline"><a href="#" class="btn btn-danger-outline radius">Page {{ book_obj_list.number }} of {{ book_obj_list.paginator.num_pages }}</a></li>
+                    <li style="display: inline"><a href="#" class="btn btn-danger-outline radius">2</a></li>
+                    <li style="display: inline"><a href="#" class="btn btn-danger-outline radius">3</a></li>
+                    <li style="display: inline"><a href="#" class="btn btn-danger-outline radius">4</a></li>
+                    <li style="display: inline"><a href="#" class="btn btn-danger-outline radius">5</a></li>
+                    {% if book_obj_list.has_next %}
+                    <li style="display: inline">
+                    <a href="?page={{ book_obj_list.next_page_number }}" class="btn btn-danger-outline radius" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

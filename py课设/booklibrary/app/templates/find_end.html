@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block name %}
+查找结果
+{% endblock %}
+
+{% block main %}
+        <div class="panel-body">
+            <table class="table table-border table-bordered table-striped mt-20" id="table">
+                <thead>
+                <tr>
+                    <th class="col1" style="text-align:center">id</th>
+                    <th class="col1" style="text-align:center">书名</th>
+                    <th class="col2" style="text-align:center">作者</th>
+                    <th class="col3" style="text-align:center">价格</th>
+                    <th class="col1" style="text-align:center">出版社</th>
+                    <th class="col2" style="text-align:center">版号</th>
+                    <th class="col2" style="text-align:center">在线阅读</th>
+                    <th class="col3" style="text-align:center">编号</th>
+                    <th class="col3" style="text-align:center">操作</th>
+                </tr>
+                {% for b in book %}
+                    <tr>
+                        <th class="col1" style="text-align:center">{{b.id}}</th>
+                        <th class="col1" style="text-align:center">{{b.BookName}}</th>
+                        <th class="col2" style="text-align:center">{{b.Author}}</th>
+                        <th class="col3" style="text-align:center">{{b.Price}}</th>
+                        <th class="col1" style="text-align:center">{{b.Publisher}}</th>
+                        <th class="col2" style="text-align:center">{{b.ISBN}}</th>
+                        <th class="col1" style="text-align:center">{{b.IsReadOnline}}</th>
+                        <th class="col3" style="text-align:center">{{b.BookNum}}</th>
+                        <th class="col3" style="text-align:center"><a class="btn btn-primary-outline radius"
+                                                                      href="/app/edit_book/?id={{book_obj.id}}">修改</a>
+                                                                    <a class="btn btn-warning-outline radius"
+                                                                       href="/app/del_book/?id={{book_obj.id}}">删除</a></th>
+                    </tr>
+                {% endfor %}
+
+                </thead>
+                <tbody id="tablebody">
+                </tbody>
+            </table>
+        </div>
+    <!--end表格-->
+{% endblock %}

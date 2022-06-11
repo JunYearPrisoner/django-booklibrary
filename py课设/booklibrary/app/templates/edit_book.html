@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block name %}
+修改图书
+{% endblock %}
+
+{% block main %}
+<form action="" method="post">
+    {% csrf_token %}
+    <!--  加密系统   -->
+    <p>
+         <input class="btn btn-primary-outline radius" type="hidden" name="id" value="{{book_obj.id}}">
+    </p>
+    <p>
+        书名 <input class="btn btn-primary-outline radius" type="text" name="BookName" value="{{book_obj.BookName}}">
+    </p>
+    <p>
+        作者 <input class="btn btn-primary-outline radius" type="text" name="Author" value="{{book_obj.Author}}">
+    </p>
+    <p>
+        价格 <input class="btn btn-primary-outline radius" type="text" name="Price" value="{{book_obj.Price}}">
+    </p>
+    <p>
+        出版社 <input class="btn btn-primary-outline radius" type="text" name="Publisher" value="{{book_obj.Publisher}}">
+    </p>
+    <p>
+        版号 <input class="btn btn-primary-outline radius" type="text" name="ISBN" value="{{book_obj.ISBN}}">
+    </p>
+    <p>
+        是否能在线阅读 <input class="btn btn-primary-outline radius" type="text" name="IsReadOnline" value="{{book_obj.IsReadOnline}}">
+    </p>
+    <p>
+        书编号 <input class="btn btn-primary-outline radius" type="text" name="BookNum" value="{{book_obj.BookNum}}">
+    </p>
+    <p>
+        <button class="btn btn-warning-outline radius" type="submit" class="btn">提交</button>
+    </p>
+</form>
+{% endblock %}
